@@ -1,0 +1,24 @@
+<div class="container full-spaced full-spaced-bottom">
+	<div class="row spaced">
+		<div class="col-xs-12">
+			<h1 class="clear-margin spaced-bottom text-center post-title">Popular Book's In All categories</h1>
+		</div>
+
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-lg-3 col-sm-6 col-xs-12 white-background shadowhighlight" ng-repeat="book in book.books track by index">
+					<div class="row">
+						<div class="col-xs-12 spaced spaced-bottom">
+							<img src="{{book.image_url}}" title="{{book.title}}" alt="{{book.title}}" class="img-responsive">
+						</div>
+
+						<div class="col-xs-12">
+							<h2 class="clear-margin spaced-bottom post-title" ng-bind="book.title"></h2>
+							<h2 class="clear-margin spaced-bottom" ng-bind="book.author.firstName"></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

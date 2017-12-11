@@ -1,0 +1,38 @@
+<div class="container full-spaced spaced-bottom">
+	<div class="row full-spaced full-spaced-bottom">
+		<div class="col-xs-12 text-center">
+			<h1 class="clear-margin post-title">Login Page</h1>			
+		</div>
+	</div>
+
+	<div class="row clear-margin">
+		<div class="col-lg-5 col-sm-7 col-xs-12 col-centered white-background full-spaced full-spaced-bottom shadowhighlight" style="border-radius:3px;">
+			<form  method="POST" class="spaced spaced-bottom" name= "userForm">
+				<div class="row full-spaced-bottom">
+					<div class="form-group">
+						<div class="col-xs-12 spaced-bottom"  ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+							<input type="email" name="email" placeholder="Your Email Address"  ng-model="user.formData['email']" class="form-control" required>
+							<p ng-if="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-12" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+							<input type="password" name="password" placeholder="Your Password" ng-model="user.formData['password']" class="form-control" required>
+							<p ng-if="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">You password is required.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row text-center half-spaced">
+					<div class="col-xs-12 center-align">
+						<input type="submit" ng-click="user.login(user.formData)" name="login" value="Login" class="btn btn-primary" ng-disabled="userForm.$invalid">
+						<a href="#!" class="btn btn-danger">Cancel</a>
+					</div>
+				</div>
+			</form>
+			<p class="text-center text-muted">
+                <small>Don't have an account yet? <a href="#!register">Register</a></small>
+            </p>
+		</div>
+	</div>
+</div>

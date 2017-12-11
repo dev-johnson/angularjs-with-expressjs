@@ -1,0 +1,38 @@
+<div class="container full-spaced spaced-bottom">
+	<div class="row full-spaced full-spaced-bottom">
+		<div class="col-xs-12 text-center">
+			<h1 class="clear-margin post-title">Create Book</h1>			
+		</div>
+	</div>
+
+	<div class="row clear-margin">
+		<div class="col-lg-9 col-sm-10 col-xs-12 col-centered white-background full-spaced full-spaced-bottom shadowhighlight" style="border-radius:3px;">
+
+			<form method="POST" name="bookFrom" ng-submit="book.createBook(book.formData)" class="spaced spaced-bottom">
+				<div class="row spaced-bottom">
+					<div class="form-group">
+						<div class="col-xs-12" ng-class="{ 'has-error' : bookFrom.title.$invalid && !bookFrom.title.$pristine }">
+							<input type="text" placeholder="First Name" name="title" ng-model="book.formData['title']" class="form-control" required>
+							<p ng-if="bookFrom.title.$invalid && !bookFrom.title.$pristine" class="help-block">Title is required.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row full-spaced-bottom">
+					<div class="form-group">
+						<div class="col-xs-12" ng-class="{ 'has-error' : bookFrom.content.$invalid && !bookFrom.content.$pristine }">
+							<textarea placeholder="A brief content about book" ng-model="book.formData['content']" name="content" ng-value="currentUser.content" class="form-control" rows="4"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="row text-center full-spaced"  ng-if="bookFrom.$valid">
+					<div class="col-xs-12 center-align">
+						<input type="submit" name="register" value="Create" class="btn btn-primary">
+						<a href="#!" class="btn btn-danger" ng-if="bookFrom.$valid">Cancel</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "name": "Mean frontend application",
+  "authors": [
+    "Johnson T"
+  ],
+  "description": "A simple application created to learn and advance the mean frontend features with angularjs",
+  "main": "index.html",
+  "keywords": [
+    "AngularJS",
+    "Bootstrap",
+    "jquery"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.6.7",
+    "angular-bootstrap": "^2.5.0",
+    "angular-cookies": "^1.6.7",
+    "angular-resource": "^1.6.7",
+    "jquery-ui": "^1.12.1",
+    "angular": "^1.6.7",
+    "angular-filter": "^0.5.17"
+  }
+}

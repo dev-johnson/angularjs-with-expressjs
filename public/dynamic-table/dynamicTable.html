@@ -1,0 +1,57 @@
+<div class="row spaced spaced-bottom">
+	<div class="col-lg-10 col-sm-10 col-xs-12">
+		<div class="form-group">
+			<input type="email" class="form-control" ng-model="search" placeholder="search records...">
+		</div>
+	</div>
+	<div class="col-lg-2 col-sm-2 col-xs-12 text-right half-spaced-bottom">
+		<button ng-click="$ctrl.show()" class="btn btn-success">
+			<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add New
+		</button>
+	</div>
+
+	<div class="col-xs-12 spaced spaced-bottom" ng-show="$ctrl.showForm">
+		<form>
+			<div class="row">
+				<div class="form-group col-lg-3 col-sm-6 col-xs-12" ng-repeat="column in $ctrl.columns">
+					<label for="column_{{column}}">{{column | uppercase}}</label>
+					<input type="text" class="form-control" id="{{column}}" ng-model="$ctrl.obj[column]">
+				</div>
+			</div>
+			<div class="row spaced spaced-bottom">
+				<div class="col-lg-6 col-sm-6 col-xs-12 text-center col-centered">
+					<input type="submit" ng-click = "$ctrl.addRecord()" ng-show="$ctrl.addbtn" value="Save" class="btn btn-primary">
+					<input type="submit" ng-click = "$ctrl.updateRecord($ctrl.updatekey)" ng-show="$ctrl.editbtn" value="Update" class="btn btn-primary">
+					<button ng-click="$ctrl.cancel()" class="btn btn-default">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-xs-12 spaced spaced-bottom table-responsive">
+		<table class="table table-striped">
+			<thead class="thead-inverse">
+				<tr>
+					<th ng-repeat="column in $ctrl.columns">
+						<span ng-bind="column | uppercase"></span>
+					</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in $ctrl.records | filter: search">
+					<td ng-repeat="column in $ctrl.columns">
+						<span>{{row[column]}}</span>
+					</td>
+					<td class="text-center">
+							<span title="Edit" class="dull-black-text" ng-click="$ctrl.editRecord($index); showFrom= true;"><i class="fa fa-pencil" aria-hidden="true"></i></span>&nbsp;&nbsp;
+
+						<span title="Delete" class="dull-black-text" ng-click="$ctrl.deleteRecord($index)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- the pop up for creating the new record -->

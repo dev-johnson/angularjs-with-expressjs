@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html ng-app="BaseApplication" ng-controller= "ApplicationController as app">
+	<head>
+		<title>ExpressJS | AngularJS Application</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/assets/css/styles.css" rel="stylesheet">
+		<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body class="light-grey-background">
+		<header>
+			<!-- main menu -->
+			<nav class="navbar navbar-default brand-dark-color clear-margin">
+		        <div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/">
+							<span><img src="https://trystwithdata.com/assets/xfunnel.png.pagespeed.ic.2BSoAx7f4G.webp" alt="Component's Logo" width="30" height="30">&nbsp;
+							<span>Book Store</span></span>
+						</a>
+					</div>
+
+					<ul class="nav navbar-nav navbar-right" id="header-nav">
+
+						<li ng-if="currentUser" class="custom-dropdown-menu">
+							<a href="javascript:void(0);">
+								<img src="{{currentUser.avatar}}" width="25" height="25" class="img-circle">&nbsp;&nbsp;
+								<span class="caret white-text"></span></a>
+							</a>
+
+							<!-- for author -->
+							<ul class="dropdown-content" ng-if="currentUser.role =='Author'">
+								<li>
+									<a class="half-spaced half-spaced-bottom" href="#!/profile/{{currentUser._id}}">Profile</a>
+								</li>
+								<li>
+									<a class="half-spaced half-spaced-bottom" href="javascript:void(0)" ng-click="app.logout(currentUser);">Logout</a>
+								</li>
+							</ul>
+
+							<!-- for reader -->
+							<ul class="dropdown-content" ng-if="currentUser.role =='Reader'">
+								<li>
+									<a class="half-spaced half-spaced-bottom" href="javascript:void(0)" ng-click="app.logout(currentUser);">Logout</a>
+								</li>
+							</ul>
+
+							<!-- for admin -->
+							<ul class="dropdown-content" ng-if="currentUser.role == 'Admin'">
+								<li>
+									<a class="half-spaced half-spaced-bottom" href="#!/admin/users">Users</a>
+								</li>
+								<li>
+									<a class="half-spaced half-spaced-bottom" href="#!/admin/books">Books</a>
+								</li>
+								<li>
+									<a class="half-spaced half-spaced-bottom" href="#!/admin/categories">Categories</a>
+								</li>
+								<li>
+									<a class="half-spaced half-spaced-bottom" href="javascript:void(0)" ng-click="app.logout(currentUser);">Logout</a>
+								</li>
+							</ul>
+						</li>
+
+						<li ng-if="!currentUser"><a href="#!login">Login</a></li>
+						<li ng-if="!currentUser"><a href="#!register">Register</a></li>
+					</ul>
+		        </div>
+			</nav>
+			<!-- main menu -->
+		</header>
+
+		<!-- flash message section -->
+		<div ng-if="flashMessage.data" style="position:absolute;top:70px;left:0px;right:0px;">
+			<div class="col-xs-12 col-lg-9 col-sm-10 col-centered">
+				<div class="row clear-margin">
+					<div class="col-xs-12 text-center {{flashMessage.type}}">
+						<p class="half-spaced half-spaced-bottom clear-margin" ng-bind="flashMessage.data"></p>
+						<span ng-click="flashMessage.data = null" title="Close" style="position:absolute;top:10px;right:16px;cursor:pointer;">
+							<i class="fa fa-times" aria-hidden="true"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- main view layout -->
+		<div ng-view id="main"></div>
+
+		<script src= "/bower_components/angular/angular.min.js" type="text/javascript"></script>
+
+		<script src= "/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+
+		<script src= "/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+
+		<script src= "/bower_components/angular-filter/dist/angular-filter.min.js" type="text/javascript"></script>
+
+		<script src= "/bower_components/angular-resource/angular-resource.min.js" type="text/javascript"></script>
+
+		<script src= "/bower_components/angular-cookies/angular-cookies.min.js" type="text/javascript"></script>
+
+		<script src= "/bower_components/angular-bootstrap/ui-bootstrap.min.js" type="text/javascript"></script>
+		
+
+		<!-- user registry module -->
+		<script src="/userRegistry/userModule.js" type="text/javascript"></script>
+		<script src="/userRegistry/user.controller.js" type="text/javascript"></script>
+		<script src="/userRegistry/userAuth.services.js" type="text/javascript"></script>
+		<script src="/userRegistry/userResource.services.js" type="text/javascript"></script>
+
+		<script src= "/adminModule/admin.module.js" type="text/javascript"></script>
+		<script src= "/adminModule/admin.controller.js" type="text/javascript"></script>
+		
+		<!-- dynamic table -->
+		<script src= "/dynamic-table/dynamicTable.js" type="text/javascript"></script>
+		<script src= "/dynamic-table/dynamicTable_Services.js" type="text/javascript"></script>
+
+		<!-- books module -->
+		<script src= "/booksModule/book.module.js" type="text/javascript"></script>
+		<script src= "/booksModule/books.controllers.js" type="text/javascript"></script>
+		<script src= "/booksModule/books.services.js" type="text/javascript"></script>
+
+		<!-- home module -->
+		<script src= "/homeModule/home.module.js" type="text/javascript"></script>
+		<script src= "/homeModule/home.controller.js" type="text/javascript"></script>
+
+
+		<script src= "/client.js" type="text/javascript"></script>
+		<script src= "/routes.js" type="text/javascript"></script>
+	</body>
+</html> 

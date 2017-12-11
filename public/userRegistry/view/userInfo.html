@@ -1,0 +1,83 @@
+<div class="container full-spaced">
+	<div class="row full-spaced full-spaced-bottom">
+		<div class="col-lg-8 col-sm-10 col-xs-12 col-centered white-background shadowhighlight">
+			<!-- Author basic bio and info -->
+			<div class="row full-spaced full-spaced-bottom">
+				<span style="position:relative;right:3%;float:right" ng-click="user.showForm=true"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+
+				<div class="col-lg-3 col-sm-3 col-xs-12 text-center col-centered">
+					<div class="uploader"></div>
+					<img src="{{currentUser.avatar}}" alt="{{currentUser.firstName}} Image" title="{{currentUser.firstName}} Image" class="img-responsive img-circle">
+				</div>
+				<div class="col-lg-10 col-sm-10 col-xs-12 text-center spaced col-centered">
+					<h1 class="clear-margin spaced spaced-bottom post-title" ng-bind="currentUser.firstName"></h1>
+					<p class="clear-margin" ng-bind="currentUser.description"></p>
+				</div>
+				<div class="col-xs-12 text-center spaced spaced-bottom">
+					<a ng-if="currentUser.facebook" href="{{currentUser.facebook}}" target="_blank">
+						<i class="fa fa-facebook" aria-hidden="true"></i>
+					</a>&nbsp;&nbsp;
+					<a ng-if="currentUser.twitter" href="{{currentUser.twitter}}" target="_blank">
+						<i class="fa fa-twitter" aria-hidden="true"></i>
+					</a>&nbsp;&nbsp;
+					<a ng-if="currentUser.instagram" href="{{currentUser.instagram}}" target="_blank">
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<!-- Author basic bio and info form -->
+			<div class="row full-spaced-bottom" ng-if="user.showForm">
+				<div class="col-xs-12">
+					<h2 class="clear-margin spaced-bottom">Edit your profile</h2>
+				</div>
+				<form method="post" name="userDetails">
+					<div class="col-xs-12">
+						<div class="row form-group">
+							<div class="col-lg-6 col-sm-6 col-xs-12">
+								<input type="text" name="email" placeholder="First Name" ng-value="currentUser.firstName"  ng-model="user.formData['firstName']" class="form-control" required>
+							</div>
+							<div class="col-lg-6 col-sm-6 col-xs-12">
+								<input type="text" name="email" placeholder="Last Name" ng-value="currentUser.lastName"  ng-model="user.formData['lastName']" class="form-control">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-xs-12">
+								<textarea placeholder="A brief description about yourself" ng-model="user.formData['description']" name="description" ng-value="currentUser.description" class="form-control" rows="4"></textarea>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-lg-4 col-sm-4 col-xs-12">
+								<input type="text" name="facebook" placeholder="Facebook link" ng-value="currentUser.facebook"  ng-model="user.formData['facebook']" class="form-control">
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-12">
+								<input type="text" name="twitter" placeholder="twitter link" ng-value="currentUser.twitter"  ng-model="user.formData['twitter']" class="form-control">
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-12">
+								<input type="text" name="insta" placeholder="instagram link" ng-value="currentUser.instagram"  ng-model="user.formData['instagram']" class="form-control">
+							</div>
+						</div>
+
+						<div class="row text-center full-spaced full-spaced-bottom" ng-if="user.formData">
+							<div class="col-xs-12 center-align">
+								<input type="submit" name="update" value="Save" ng-click="user.updateUser(user.formData, currentUser._id)" class="btn btn-primary">
+								<span ng-click="user.clearFrom()" class="btn btn-danger">Cancel</span>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="col-lg-8 col-sm-10 col-xs-12 col-centered">
+			<div class="row full-spaced full-spaced-bottom">
+				<div class="col-xs-12" ng-if="!currentUser.books.length">
+					<h2 class="text-center">You haven't added and books, Kindly add some.<h2>
+				</div>
+
+				<div class="col-xs-12" ng-if="currentUser.books.length">
+					<h2>You haven't added and books, Kindly add some.<h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

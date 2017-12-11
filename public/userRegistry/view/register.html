@@ -1,0 +1,75 @@
+<div class="container full-spaced spaced-bottom">
+	<div class="row full-spaced full-spaced-bottom">
+		<div class="col-xs-12 text-center">
+			<h1 class="clear-margin post-title">Register Page</h1>			
+		</div>
+	</div>
+
+	<div class="row clear-margin">
+		<div class="col-lg-5 col-sm-7 col-xs-12 col-centered white-background full-spaced full-spaced-bottom shadowhighlight" style="border-radius:3px;">
+
+			<form method="POST" name="regForm" ng-submit="user.createUser(user.formDate)" class="spaced spaced-bottom">
+				<div class="row spaced-bottom">
+					<div class="form-group" ng-class="{ 'has-error' : regForm.userType.$invalid && regForm.userType.$dirty}">
+						<div class="col-lg-6 col-sm-6 col-xs-12 text-center spaced-bottom">
+							<div class="radio">
+								<label><input type="radio" name="userType" ng-model="user.formDate['userType']" value=true required>I'm an Author</label>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-6 col-xs-12 text-center spaced-bottom">
+							<div class="radio">
+								<label><input type="radio" name="userType" ng-model="user.formDate['userType']" value=false required>I'm an Reader</label>
+							</div>
+						</div>
+						<p ng-if="regForm.userType.$invalid && regForm.userType.$dirty" class="help-block text-center">Choose who you are.</p>
+					</div>
+
+					<div class="form-group">
+						<div class="col-lg-6 col-sm-6 col-xs-12" ng-class="{ 'has-error' : regForm.firstname.$invalid && !regForm.firstname.$pristine }">
+							<input type="text" placeholder="First Name" name="firstname" ng-model="user.formDate['firstName']" class="form-control" required>
+							<p ng-if="regForm.firstname.$invalid && !regForm.firstname.$pristine" class="help-block">You first name is required.</p>
+						</div>
+
+						<div class="col-lg-6 col-sm-6 col-xs-12">
+							<input type="text" placeholder="Last Name" name="last name" ng-model="user.formDate['lastName']" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="row full-spaced-bottom">
+					<div class="form-group">
+						<div class="col-xs-12" ng-class="{ 'has-error' : regForm.email.$invalid && !regForm.email.$pristine }">
+							<input type="email" placeholder="Valid Email Address" name="email" ng-model="user.formDate['email']"  class="form-control" required>
+							<p ng-if="regForm.email.$invalid && !regForm.email.$pristine" class="help-block">Enter a valid email.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row full-spaced-bottom" >
+					<div class="form-group">
+						<div class="col-lg-6 col-sm-6 col-xs-12" ng-class="{ 'has-error' : regForm.Password.$invalid && !regForm.Password.$pristine }">
+							<input type="Password" placeholder="Password  (min 6 character)" name="Password" ng-model="user.formDate['password']" ng-minlength="6" class="form-control" required>
+							<p ng-if="regForm.Password.$error.minlength" class="help-block">Weak Password</p>
+							<p ng-if="regForm.Password.$invalid && !regForm.Password.$pristine" class="help-block">Password is required</p>
+						</div>
+
+						<div class="col-lg-6 col-sm-6 col-xs-12">
+							<input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="user.formDate['confirmPwd']" ng-minlength="3" class="form-control" required>
+						</div>
+					</div>
+				</div>
+
+				<div class="row text-center full-spaced"  ng-if="regForm.$valid">
+					<div class="col-xs-12 center-align">
+						<input type="submit" name="register" value="Sign Up" class="btn btn-primary">
+						<a href="#!" class="btn btn-danger" ng-if="regForm.$valid">Cancel</a>
+					</div>
+				</div>
+			</form>
+			<p class="text-center text-muted">
+                <small>Already have an account yet? <a href="#!login">Login</a></small>
+            </p>
+
+		</div>
+	</div>
+</div>

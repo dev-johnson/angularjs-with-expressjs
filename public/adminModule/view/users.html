@@ -1,0 +1,10 @@
+<div class="container full-spaced">
+	<div class="row full-spaced">
+		<div class="col-xs-12">
+			<h1 class="clear-margin spaced-bottom post-title">List of Users</h1>
+		</div>
+		<div class="col-xs-12">
+			<dynamic-table table-source="/app/admin/users" remove-columns="['password_salt','encrypted_password', '_id', 'books', '__v', 'description']" class="highly-spaced"></dynamic-table>
+		</div>
+	</div>
+</div>
